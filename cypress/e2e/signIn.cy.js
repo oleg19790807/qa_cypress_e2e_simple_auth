@@ -7,9 +7,7 @@ describe('Sign In page', () => {
 
   it('should handle login scenarios and logout', () => {
     // Login with valid credentials
-    cy.get('#username').type('tomsmith');
-    cy.get('#password').type('SuperSecretPassword!');
-    cy.get('button[type="submit"]').click();
+    cy.login('tomsmith', 'SuperSecretPassword!');
 
     // Assert successful login
     cy.get('.flash.success').should(
@@ -29,9 +27,7 @@ describe('Sign In page', () => {
     cy.url().should('include', '/login');
 
     // Login with invalid credentials
-    cy.get('#username').type('invalidUser');
-    cy.get('#password').type('invalidPass');
-    cy.get('button[type="submit"]').click();
+    cy.login('invalidUser', 'invalidPass');
 
     // Assert validation error
     cy.get('.flash.error').should('contain', 'Your username is invalid!');
