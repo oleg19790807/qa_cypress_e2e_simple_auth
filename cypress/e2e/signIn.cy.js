@@ -33,10 +33,3 @@ describe('Sign In page', () => {
     cy.get('.flash.error').should('contain', 'Your username is invalid!');
   });
 });
-
-// Custom commands in cypress/support/commands.js
-Cypress.Commands.add('login', (username, password) => {
-  cy.get('#username').type(username);
-  cy.get('#password').type(password);
-  cy.get('button[type="submit"]').click();
-});
